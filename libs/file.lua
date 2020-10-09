@@ -3,8 +3,6 @@
 local status, json = pcall(require, "json")
 json = status and json or {encode = function(v) return v end, decode = function(v) return v end}
 
-local is_unix = package.config:sub(1, 1) == "/"
-
 local io, table, format = io, table, string.format
 
 local file = {}
@@ -33,7 +31,9 @@ function file.Write(path, content, json_encode)
 	return true
 end
 
+local is_unix = package.config:sub(1, 1) == "/"
 local pattern = is_unix and "ls \"%s\"" or "dir \"%s\" /b"
+
 function file.ScanDir(path)
     local out = {}
 

@@ -4,7 +4,7 @@ if type(type) == "table" then return type end
 
 local otype = type
 type = setmetatable({}, {__call = function(self, v)
-    return otype(v)
+	return otype(v)
 end})
 
 local istable = {["table"] = true}

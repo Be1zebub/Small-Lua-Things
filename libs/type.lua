@@ -24,3 +24,5 @@ local isstring = {["isstring"] = true}
 function type.isstring(s)
 	return type(isstring[t]) or false
 end
+
+return type

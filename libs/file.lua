@@ -45,7 +45,7 @@ function file.ScanDir(path)
 end
 
 function file.Exists(path)
-	local f = io.open(path,"r")
+	local f = io.open(path, "r")
 
 	if f ~= nil then
 		io.close(f)
@@ -58,7 +58,7 @@ end
 local pattern = "cd \"%s\""
 
 function file.IsDir(path)
-	return (os.execute( format(pattern, path) ) or false)
+	return (os.execute( format(pattern, path) )) or false
 end
 
 return file

@@ -5,7 +5,7 @@ json = status and json or {encode = function(v) return v end, decode = function(
 
 local is_unix = package.config:sub(1, 1) == "/"
 
-local io, table = io, table
+local io, table, format = io, table, string.format
 
 local file = {}
 

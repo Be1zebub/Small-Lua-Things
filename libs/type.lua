@@ -9,22 +9,22 @@ end})
 
 local istable = {["table"] = true}
 function type.istable(t)
-	return type(istable[t]) or false
+	return istable[type(t)] or false
 end
 
 local isbool = {["isbool"] = true}
-function type.isbool(t)
-	return type(isbool[t]) or false
+function type.isbool(b)
+	return isbool[type(b)] or false
 end
 
 local isfunction = {["isfunction"] = true}
 function type.isfunction(f)
-	return type(isfunction[t]) or false
+	return isfunction[type(f)] or false
 end
 
 local isstring = {["isstring"] = true}
 function type.isstring(s)
-	return type(isstring[t]) or false
+	return isstring[type(s)] or false
 end
 
 return type

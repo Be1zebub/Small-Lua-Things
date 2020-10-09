@@ -37,8 +37,8 @@ local pattern = is_unix and "ls \"%s\"" or "dir \"%s\" /b"
 function file.ScanDir(path)
     local out = {}
 
-    for fname in io.popen( format(pattern, path) ):lines() do
-        table.insert(out, fname)
+    for name in io.popen( format(pattern, path) ):lines() do
+        table.insert(out, name)
     end
 
     return out

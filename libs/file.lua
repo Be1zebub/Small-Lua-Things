@@ -35,13 +35,30 @@ local is_unix = package.config:sub(1, 1) == "/"
 local pattern = is_unix and "ls \"%s\"" or "dir \"%s\" /b"
 
 function file.ScanDir(path)
-    local out = {}
+	local out = {}
 
-    for name in io.popen( format(pattern, path) ):lines() do
-        table.insert(out, name)
-    end
+	for name in io.popen( format(pattern, path) ):lines() do
+		table.insert(out, name)
+	end
 
-    return out
+	return out
+end
+
+function file.Exists(path)
+	local f = io.open(path,"r")
+
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
+end
+
+local pattern = "cd \"%s\""
+
+function file.IsDir(path)
+	return (os.execute( format(pattern, path) ) or false)
 end
 
 return file

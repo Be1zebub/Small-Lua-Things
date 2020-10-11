@@ -12,17 +12,17 @@ function type.istable(t)
 	return istable[type(t)] or false
 end
 
-local isbool = {["isbool"] = true}
+local isbool = {["bool"] = true}
 function type.isbool(b)
 	return isbool[type(b)] or false
 end
 
-local isfunction = {["isfunction"] = true}
+local isfunction = {["function"] = true}
 function type.isfunction(f)
 	return isfunction[type(f)] or false
 end
 
-local isstring = {["isstring"] = true}
+local isstring = {["string"] = true}
 function type.isstring(s)
 	return isstring[type(s)] or false
 end

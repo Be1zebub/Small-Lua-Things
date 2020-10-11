@@ -27,4 +27,9 @@ function type.isstring(s)
 	return isstring[type(s)] or false
 end
 
+local isnumber = {["number"] = true}
+function type.isnumber(s)
+	return isnumber[type(s)] or false
+end
+
 return type

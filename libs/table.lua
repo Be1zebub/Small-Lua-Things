@@ -112,7 +112,7 @@ function timer.Create(delay, iterations, callback) -- порт glua like фун�
 	end))
 end
 
-function IntervalLoop(time, tab, callback, notsequential)
+function table.Interval(time, tab, callback, notsequential)
     if notsequential then -- хардкодинг не требует лишних циклов.
         timer.Create(time, table.Count(tab), function(iterations)
             local k, v = next(tab)

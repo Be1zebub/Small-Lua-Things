@@ -95,7 +95,7 @@ table.forEach = function(t, c)
 	end
 end
 
---!!! Если вы желаете использовать table.Interval в glua, удалите код с 99 по 114 строчку !!!-- 
+--!!! Если вы желаете использовать table.Interval в glua, удалите код с 99 по 114 строчку !!!-- Это +- тот же https://github.com/Be1zebub/Small-GLua-Things/blob/master/sh_intervalloop.lua но адаптированный для luvit timer либы
 local success, timer = pcall(require, "timer") -- https://github.com/luvit/luvit/blob/master/deps/timer.lua
 if not success then return end
 

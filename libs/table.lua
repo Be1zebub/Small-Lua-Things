@@ -6,7 +6,6 @@ local function DoRecursive(tab, callback, onfinish)
     end
     tab[k] = nil
 
-
     callback(k, v, function()
         DoRecursive(tab, callback, onfinish)
     end)

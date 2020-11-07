@@ -94,3 +94,36 @@ table.forEach = function(t, c)
 		c(v, k)
 	end
 end
+
+local success, timer = pcall(require, "timer") -- https://github.com/luvit/luvit/blob/master/deps/timer.lua
+if not success then return end
+
+function timer.Simple(delay, callback)
+	timer.setTimeout(delay, coroutine.wrap(function()
+		callback()
+	end))
+end
+
+function timer.Create(delay, iterations, callback) -- порт glua like функции на luvit timer либу
+	 timer.Simple(delay, coroutine.wrap(function()
+		iterations = iterations - 1
+		callback(iterations, iterations*delay) -- remain iterations&time
+		if iterations > 0 then timer.Simple(delay, iterations, callback) end
+	end))
+end
+
+function IntervalLoop(time, tab, callback, notsequential)
+    if notsequential then -- хардкодинг не требует лишних циклов.
+        timer.Create(time, table.Count(tab), function(iterations)
+            local k, v = next(tab)
+            callback(v, k, iterations)
+            tab[k] = nil
+        end)
+    else
+        local i = 0
+        timer.Create(time, #tab, function(iterations)
+            i = i + 1
+            callback(tab[i], i, iterations)
+        end)
+    end
+end

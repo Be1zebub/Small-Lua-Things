@@ -106,7 +106,7 @@ function timer.Simple(delay, callback)
 end
 
 function timer.Create(delay, iterations, callback) -- порт glua like функции на luvit timer либу
-	 timer.Simple(delay, coroutine.wrap(function()
+	 timer.Simple(delay, coroutine.wrap(function() -- на самом деле красивее было-бы использовать timer.setInterval - но мне в падлу заморачиваться :)
 		iterations = iterations - 1
 		callback(iterations, iterations*delay) -- remain iterations&time
 		if iterations > 0 then timer.Simple(delay, iterations, callback) end

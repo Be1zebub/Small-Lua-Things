@@ -31,7 +31,7 @@ function file.Write(path, content, json_encode)
 	return true
 end
 
-local is_unix = package.config:sub(1, 1) == "/"
+local is_unix = package.config and package.config:sub(1, 1) == "/" or true
 local pattern = is_unix and "ls %q" or "dir %q /b"
 
 function file.ScanDir(path)
